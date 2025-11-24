@@ -163,7 +163,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Created by **Alexandre** - Data Engineer specializing in cloud-native data platforms
 
 - GitHub: [@AlexandreFCosta](https://github.com/AlexandreFCosta)
-- LinkedIn: [Alexandre Da Costa ](https://www.linkedin.com/in/alexandrefeitosacosta/)
+- LinkedIn: [AlexandreCosta ](https://www.linkedin.com/in/alexandrefeitosacosta/)
 
 ---
 
