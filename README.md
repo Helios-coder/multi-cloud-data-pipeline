@@ -97,6 +97,8 @@ Together, we can make this data pipeline even better.
 
 Follow us on GitHub to get updates and news about the latest features and releases. Make sure you check back often to see what’s new!
 
+<!-- Test commit for synchronize event -->
+
 ---
 test
 Now you are ready to set up and run the multi-cloud-data-pipeline. To start the download, please visit:
