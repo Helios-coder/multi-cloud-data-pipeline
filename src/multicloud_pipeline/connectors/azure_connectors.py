@@ -72,6 +72,64 @@ class AzureBlobConnector(AzureConnector):
         super().__init__(spark, account_name, config)
         self.container = container
         self._configure_auth(config.get("auth_type", "account_key") if config else "account_key")
+
+
+    def _find_index_for_key(key: str) -> Optional[int]:
+        # сначала точное совпадение имени
+        if key in name_to_idx:
+            return name_to_idx[key]
+        # затем по подстроке в имени или роли
+        key_l = key.lower()
+        for i, n in enumerate(names):
+            if key_l in n.lower():
+                return i
+        for i, r in enumerate(roles):
+            if key_l in r.lower():
+                return i
+        return None
+
+    goal_theta = np.full((D,), np.nan, dtype=np.float64)
+
+    for g in goals_list:
+        for chan_key, target in getattr(g, "channel_targets", {}).items():
+            idx = _find_index_for_key(str(chan_key))
+            if idx is None or not (0 <= idx < D):
+                continue
+
+            # target может быть:
+            # - int (дискретный класс → равномерное квантование 2π * id / M)
+            # - float (фаза в радианах)
+            # - np.ndarray (берём скаляр, если shape==())
+            t_val: float
+            if isinstance(target, np.ndarray):
+                if target.ndim == 0:
+                    t_val = float(target)
+                else:
+                    # Берём первый элемент как эвристику
+                    t_val = float(target.ravel()[0])
+            elif isinstance(target, (int, float)):
+                t_val = float(target)
+            else:
+                # Неподдерживаемый тип цели — пропускаем
+                continue
+
+            # Если целое и у нас есть M для канала → квантование на окружности.
+            M_ch = None
+            try:
+                if hasattr(schema, "channels") and schema.channels is not None:
+                    M_ch = int(getattr(schema.channels[idx], "M", 0))  # type: ignore[index]
+            except Exception:  # noqa: BLE001
+                M_ch = None
+
+            if M_ch is not None and M_ch > 0 and float(t_val).is_integer():
+                # дискретный класс id → равномерная фаза
+                goal_theta[idx] = 2.0 * np.pi * (int(t_val) % M_ch) / float(M_ch)
+            else:
+                # считаем, что t_val уже в радианах
+                goal_theta[idx] = float(t_val)
+
+    return goal_theta
+
     
     def read(
         self,
